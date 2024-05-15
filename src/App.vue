@@ -1,3 +1,5 @@
+<!-- App.vue -->
+
 <script setup>
 import Emp from './components/Employees.vue'
 import NavBar from './components/NavBar.vue'
@@ -5,6 +7,9 @@ import NavBar from './components/NavBar.vue'
 
 <template>
   <main>
+    <router-link to="/">Employees</router-link>
+    
+    <router-view></router-view>
     <NavBar/>
     <Emp/>
   </main>
