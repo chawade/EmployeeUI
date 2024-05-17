@@ -35,10 +35,37 @@ a,
 } */
 
 /* Home */
+.home-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.l-home{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  place-items: center;
+}
+
+.r-home{
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 16px;
+}
+
+
+/* Employee */
+.emp-container{
+  padding-top: 12px;
+}
+
 .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 12px;
+  /* margin-top: 12px; */
   text-align: center;
 }
 
@@ -54,5 +81,7 @@ td {
 }
 
 .data-table tbody tr:nth-child(even) {
-  background-color: var(--color-write);
+  background-color: var(--color-white);
+  color: var(--color-dark);
 }
+

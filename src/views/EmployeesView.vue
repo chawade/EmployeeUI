@@ -11,7 +11,6 @@ const department = ref('กรุณาเลือกแผนก');
 const position = ref('');
 const gender = ref('กรุณาเลือกเพศ');
 
-// Function to save employee data
 async function saveData() {
     const formData = {
         fname: fname.value,
@@ -25,7 +24,6 @@ async function saveData() {
     try {
         const data = await apiService.SaveEmployee(formData);
         if (data === 1) {
-            // Show success message and reload the page
             window.alert("Save Employee Complete");
             window.location.reload();
         }

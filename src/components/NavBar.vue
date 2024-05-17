@@ -1,27 +1,16 @@
 <template>
     <nav>
-        <div class="container nav-container">
-            <h5>Employees Management</h5>
+        <div class="nav-container">
+            <router-link to="/">Employees Management</router-link>
             <ul class="nav-links">
-                <li>
-                    <a href='#'>Employees</a>
-                </li>
-                <li>
-                    <a href='#'>Departments</a>
-                </li>
-                <li>
-                    <a href='#'>Projects</a>
-                </li>
+                <li><router-link to="/">Home</router-link></li>
+                <li><router-link to="/employees">Employee</router-link></li>
             </ul>
         </div>
     </nav>
 </template>
 
 <style scoped>
-h5{
-    color: black;
-    font-size: 20px;
-}
 nav {
     height: 3rem;
     display: grid;
@@ -38,8 +27,12 @@ nav {
     justify-content: space-between;
     width: 100%;
     padding: 0 3rem;
-    background-color: white;
+    background-color: var(--color-white);
     max-width: none;
+}
+
+.nav-container a{
+    color: var(--color-dark);
 }
 
 .nav-links {
@@ -52,13 +45,15 @@ nav {
 }
 
 .nav-links li a {
-    color: black;
     transition: .4 ease;
 }
 
 .nav-links li a:hover {
-    color: orange;
+    color: var(--color-danger);
 
 }
 
+.nav-links .router-link-exact-active {
+    color: var(--color-primary);
+}
 </style>

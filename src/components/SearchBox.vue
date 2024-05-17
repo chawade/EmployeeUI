@@ -1,3 +1,21 @@
+<!-- SearchBox.vue -->
+<script setup>
+
+import { ref } from 'vue';
+import { apiService } from '../function/GetListEmp.js';
+
+const searchQuery = ref('');
+
+const search = async () => {
+  try {
+    const result = await apiService.searchEmployees(searchQuery.value);
+    // Do something with the search result
+  } catch (error) {
+    console.error('Error searching employees:', error);
+  }
+};
+</script>
+
 <template>
   <div class="search-box">
     <input type="text" placeholder="Search..." v-model="searchQuery">
@@ -5,23 +23,13 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-
-const searchQuery = ref('');
-
-const search = () => {
-  // ทำสิ่งที่คุณต้องการให้เกิดขึ้นเมื่อคลิกปุ่ม Search
-};
-</script>
-
 <style scoped>
 .search-box {
   display: flex;
   width: 30%;
-  background: var(--color-wite);
+  background: var(--color-white);
   color: var(--color-light);
-  border-color: var(--color-wite);
+  border-color: var(--color-white);
   border: 3px solid var(--color-danger);
   border-radius: 50px;
   text-transform: uppercase;
@@ -46,7 +54,7 @@ const search = () => {
   border-radius: 50px;
   padding: 10px 20px;
   border: none;
-  color: var(--color-wite);
+  color: var(--color-white);
   cursor: pointer;
   font-size: 16px;
   outline: none;

@@ -19,7 +19,7 @@
   --color-primary: #37C2A5;
   --color-danger: #FC9D17;
 
-  --color-wite: #ffffff;
+  --color-white: #ffffff;
   --color-light: #ccd0cf;
 
   --color-black: #292629;
@@ -35,7 +35,7 @@ html {
 
 body {
   background: var(--color-black);
-  color: var(--color-wite);
+  color: var(--color-white);
 }
 
 h1 {
@@ -88,7 +88,7 @@ span {
   cursor: pointer;
   text-transform: uppercase;
   font-size: 16px;
-  border: 1px solid var(--color-wite);
+  border: 1px solid var(--color-white);
   padding: 18px 40px;
   color: var(--color-primary);
   border-radius: 50px;
@@ -96,9 +96,9 @@ span {
 }
 
 .btn:hover {
-  background: var(--color-wite);
+  background: var(--color-white);
   color: var(--color-primary);
-  border-color: var(--color-wite);
+  border-color: var(--color-white);
 }
 
 .btn-primary {
@@ -121,10 +121,11 @@ img {
 
 .container {
   width: 90%;
-  margin: 0 auto;
+  height: calc(100vh - 3em);
+  margin: 3em auto 0;
   max-width: 1480px;
 }
 
 section {
-  padding: 8rem 0;
+  padding: 20px 0;
 }
