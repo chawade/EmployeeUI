@@ -19,7 +19,7 @@ const handleSearch = async (searchText) => {
 
 
 // Select Department 
-const selectedDepartment = ref('1');
+const selectedDepartment = ref(0);
 
 const handleDepartmentChange = async () => {
     try {
@@ -29,6 +29,11 @@ const handleDepartmentChange = async () => {
     } catch (error) {
         console.error('Error selecting department:', error);
     }
+};
+// Clear Selection function
+const clearSelection = async () => {
+  selectedDepartment.value = 0;
+  await fetchEmployees();
 };
 
 
@@ -51,13 +56,19 @@ onMounted(fetchEmployees);
 <template>
   <div class="container emp-container">
     <div class="emp-header">
+      <div class="emp-selectDept">
+        <label for="departmentID">Department : </label>
+        <select id="departmentID" v-model="selectedDepartment" @change="handleDepartmentChange">
+          <option value="0">Select Department</option>
+          <option value="1">IT</option>
+          <option value="2">HR</option>
+          <option value="3">Marketing</option>
+          <option value="4">Logistic</option>
+        </select>
+        <button @click="clearSelection">Clear Selection</button>
+      </div>
       <SearchBox @search="handleSearch" />
-      <select id="departmentID" v-model="selectedDepartment" @change="handleDepartmentChange">
-        <option value="1">IT</option>
-        <option value="2">HR</option>
-        <option value="3">Marketing</option>
-        <option value="4">Logistic</option>
-      </select>
+      <li><router-link to="/add-employee">New</router-link></li>
 
     </div>
     <div class="emp-table" v-if="employees.length > 0">

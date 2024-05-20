@@ -5,7 +5,6 @@
             <ul class="nav-links">
                 <li><router-link to="/">Home</router-link></li>
                 <li><router-link to="/employees">Employee</router-link></li>
-                <li><router-link to="/add-employee">Add Employee</router-link></li>
             </ul>
         </div>
     </nav>
