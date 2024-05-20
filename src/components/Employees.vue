@@ -3,10 +3,11 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import SearchBox from './SearchBox.vue';
-import { apiService } from '../function/GetListEmp.js';
+import { apiService } from '../function/ApiService';
 
 const employees = ref([]);
 
+// Search
 const handleSearch = async (searchText) => {
   try {
     const result = await apiService.searchEmployees(searchText);
@@ -16,11 +17,15 @@ const handleSearch = async (searchText) => {
   }
 };
 
+
+//Get All Emp List
 const fetchEmployees = async () => {
   try {
     employees.value = await apiService.getEmployees();
   } catch (error) {
     console.error('Error fetching employees:', error);
+  } finally {
+    isLoading.value = false;
   }
 };
 
@@ -59,7 +64,7 @@ onMounted(fetchEmployees);
       </table>
     </div>
 
-    <div class="emp-notfound" v-else>
+    <div class="emp-notfound" v-else-if="!isLoading">
       <p>No employees found.</p>
     </div>
   </div>
