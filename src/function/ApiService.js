@@ -34,7 +34,24 @@ const apiService = {
     } catch (error) {
       throw new Error('Failed to add employee: ' + error.message);
     }
-  }
+  },
+  
+  /* Department Controller */
+
+  async selectDepartment(id) {
+    try {
+        const response = await axios.get(`${baseURL}/Department/GetEmployeeByDepartment/${id}`);
+        return response.data;
+    } catch (error) {
+        throw new Error('Failed to Select Department: ' + error.message);
+    }
+}
+
+
+
+
 };
+
+
 
 export { apiService };

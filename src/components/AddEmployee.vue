@@ -6,7 +6,7 @@ const employee = ref({
   firstName: '',
   lastName: '',
   email: '',
-  gender: 'Male',
+  gender: 'Other',
   departmentID: 'IT',
   jobTitle: ''
 });
@@ -18,7 +18,7 @@ const submitEmployee = async () => {
       firstName: '',
       lastName: '',
       email: '',
-      gender: 'Male',
+      gender: 'Other',
       departmentID: 'IT',
       jobTitle: ''
     };

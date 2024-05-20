@@ -18,6 +18,20 @@ const handleSearch = async (searchText) => {
 };
 
 
+// Select Department 
+const selectedDepartment = ref('1');
+
+const handleDepartmentChange = async () => {
+    try {
+        const departmentId = selectedDepartment.value;
+        const employeesInDepartment = await apiService.selectDepartment(departmentId);
+        employees.value = employeesInDepartment;
+    } catch (error) {
+        console.error('Error selecting department:', error);
+    }
+};
+
+
 //Get All Emp List
 const fetchEmployees = async () => {
   try {
@@ -36,7 +50,16 @@ onMounted(fetchEmployees);
 
 <template>
   <div class="container emp-container">
-    <SearchBox @search="handleSearch" />
+    <div class="emp-header">
+      <SearchBox @search="handleSearch" />
+      <select id="departmentID" v-model="selectedDepartment" @change="handleDepartmentChange">
+        <option value="1">IT</option>
+        <option value="2">HR</option>
+        <option value="3">Marketing</option>
+        <option value="4">Logistic</option>
+      </select>
+
+    </div>
     <div class="emp-table" v-if="employees.length > 0">
       <table class="data-table">
         <thead>
