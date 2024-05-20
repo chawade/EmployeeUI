@@ -80,8 +80,8 @@ td {
   color: var(--color-black)
 }
 
-.data-table tbody tr:nth-child(even) {
+/* .data-table tbody tr:nth-child(even) {
   background-color: var(--color-white);
   color: var(--color-dark);
-}
+} */
 

@@ -1,25 +1,27 @@
 <!-- SearchBox.vue -->
 <script setup>
 
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { apiService } from '../function/GetListEmp.js';
+import { debounce } from 'lodash-es';
+
+// import 'primeicons/primeicons.css'
 
 const searchQuery = ref('');
 
-const search = async () => {
-  try {
-    const result = await apiService.searchEmployees(searchQuery.value);
-    // Do something with the search result
-  } catch (error) {
-    console.error('Error searching employees:', error);
-  }
-};
+const emit = defineEmits(['search']);
+
+const handleSearch = debounce(() => {
+  emit('search', searchQuery.value);
+}, 300);
+
+watch(searchQuery, handleSearch);
+
 </script>
 
 <template>
   <div class="search-box">
     <input type="text" placeholder="Search..." v-model="searchQuery">
-    <button @click="search">Search</button>
   </div>
 </template>
 

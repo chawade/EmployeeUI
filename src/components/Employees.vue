@@ -2,34 +2,41 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-// import SearchBox from './SearchBox.vue';
-// import { apiService } from '../function/GetListEmp.js';
+import SearchBox from './SearchBox.vue';
+import { apiService } from '../function/GetListEmp.js';
 
 const employees = ref([]);
 
-onMounted(async () => {
+const handleSearch = async (searchText) => {
   try {
-    const response = await fetch('http://localhost:5173/api/Employee/GetEmployees'); 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    employees.value = data;
+    const result = await apiService.searchEmployees(searchText);
+    employees.value = result;
   } catch (error) {
-    alert(error.message);
+    console.error('Error while searching employees:', error);
   }
-});
+};
+
+const fetchEmployees = async () => {
+  try {
+    employees.value = await apiService.getEmployees();
+  } catch (error) {
+    console.error('Error fetching employees:', error);
+  }
+};
+
+onMounted(fetchEmployees);
+
 </script>
 
 
 <template>
   <div class="container emp-container">
-    <!-- <SearchBox @search="handleSearch" /> -->
-    <div class="emp-table">
+    <SearchBox @search="handleSearch" />
+    <div class="emp-table" v-if="employees.length > 0">
       <table class="data-table">
         <thead>
           <tr>
-            <th></th>
+            <th>No.</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
@@ -50,6 +57,10 @@ onMounted(async () => {
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="emp-notfound" v-else>
+      <p>No employees found.</p>
     </div>
   </div>
 </template>

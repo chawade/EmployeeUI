@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'; // ใช้การนำเข้า createRouter และ createWebHistory แทน Router
+import { createRouter, createWebHistory } from 'vue-router';
 
-import Employees from '@/components/Employees.vue';
 import Home from '@/components/Home.vue'
+import Employees from '@/components/Employees.vue';
+import AddEmployee from '@/components/AddEmployee.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -15,6 +16,11 @@ const router = createRouter({
             path: '/employees',
             name: 'Employees',
             component: Employees
+        },
+        {
+            path: '/add-employee',
+            name: 'AddEmployee',
+            component: AddEmployee
         }
     ]
 });
