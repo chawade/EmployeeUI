@@ -1,0 +1,190 @@
+@import './base.css';
+
+/* #app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+} */
+
+/* Home */
+.home-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.l-home{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  place-items: center;
+}
+
+.r-home{
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 16px;
+}
+
+
+/* Employee */
+.emp-container{
+  padding-top: 12px;
+}
+
+.emp-header{
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-primary);
+  /* padding: 0 0 3em 0; */
+}
+
+.emp-addSearch{
+  display: flex;
+  gap: 15px;
+  margin: auto 0 auto 0;
+}
+
+.emp-selectDept{
+  display: flex;
+  gap: .3em;
+  margin: auto 0;
+}
+
+.emp-selectDept select, button{
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.emp-selectDept label{
+  margin: auto;
+}
+
+.dept-select {
+  border-radius: 5px;
+  border: 3px solid var(--color-danger);
+  font-size: 1em;
+  background-color: var(--color-white);
+}
+
+.dept-select option{
+  padding: 3em;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.data-table th,
+td {
+  padding: 8px;
+}
+
+.data-table th {
+  background-color: var(--color-primary);
+  border-radius: 50px;
+  color: var(--color-black)
+}
+
+/* .data-table tbody tr:nth-child(even) {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+} */
+
+.emp-notfound{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 8em);
+  text-align: center;
+}
+
+
+/* Add-Employee */
+
+.add-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  justify-content: center;
+  margin: 3em auto 0;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.form-group {
+  flex: 1;
+  margin: 0 1em 1em 0;
+}
+
+.form-group select {
+  display: flex;
+  padding: 10px;
+  border: 1px solid var(--color-white);
+  border-radius: 10px;
+  font-size: 16px;
+  justify-content: space-around;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.add-selection select{
+  display: flex;
+  padding: 10px;
+  border: 1px solid var(--color-white);
+  border-radius: 10px;
+  font-size: 16px;
+}
+.add-selection {
+  display: flex;
+  justify-content: space-around;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-white);
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.add-submit{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1em;
+}

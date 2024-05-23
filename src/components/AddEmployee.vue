@@ -1,13 +1,13 @@
 <script setup>
 import { ref } from 'vue';
-import { apiService } from '../function/ApiService.js';
+import { apiService } from '../function/EmpApiService.js';
 
 const employee = ref({
   firstName: '',
   lastName: '',
   email: '',
   gender: 'Other',
-  departmentID: 'IT',
+  departmentID: 1,
   jobTitle: ''
 });
 
@@ -19,7 +19,7 @@ const submitEmployee = async () => {
       lastName: '',
       email: '',
       gender: 'Other',
-      departmentID: 'IT',
+      departmentID: 1,
       jobTitle: ''
     };
   } catch (error) {
@@ -30,7 +30,10 @@ const submitEmployee = async () => {
 
 <template>
     <div class="container add-container">
-        <h1>Add New Employee</h1>
+        <div class="add-l">
+            <li><router-link to="/employees">Back</router-link></li>
+            <h1>Add New Employee</h1>
+        </div>
         <form @submit.prevent="submitEmployee">
             <div class="form-group">
                 <label for="firstName">First Name:</label>
@@ -44,6 +47,7 @@ const submitEmployee = async () => {
                 <label for="email">Email:</label>
                 <input type="email" id="email" v-model="employee.email" />
             </div>
+            <div class="add-selection">
             <div class="form-group">
                 <label for="gender">Gender:</label>
                 <select id="gender" v-model="employee.gender">
@@ -52,20 +56,23 @@ const submitEmployee = async () => {
                     <option>Other</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="departmentID">Department Name:</label>
-                <select id="departmentID" v-model="employee.departmentID" required >
-                    <option value="1">IT</option>
-                    <option value="2">HR</option>
-                    <option value="3">Margeting</option>
-                    <option value="4">Logistic</option>
-                </select>
+                <div class="form-group">
+                    <label for="departmentID">Department:</label>
+                    <select id="departmentID" v-model="employee.departmentID" required >
+                        <option value="1">IT</option>
+                        <option value="2">HR</option>
+                        <option value="3">Marketing</option>
+                        <option value="4">Logistic</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group">
+                <div class="form-group">
                 <label for="jobTitle">Job Title:</label>
                 <input type="text" id="jobTitle" v-model="employee.jobTitle"/>
             </div>
-            <button type="submit">Submit</button>
+            <div class="add-submit">
+                <button type="submit" class="btn btn-danger">Submit</button>
+            </div>
         </form>
     </div>
 </template>

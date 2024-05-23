@@ -26,8 +26,9 @@ watch(searchQuery, handleSearch);
 
 <style scoped>
 .search-box {
-  display: flex;
-  width: 30%;
+  display: block;
+  height: 50px;
+  width: fit-content;
   background: var(--color-white);
   color: var(--color-light);
   border-color: var(--color-white);
@@ -36,9 +37,8 @@ watch(searchQuery, handleSearch);
   text-transform: uppercase;
   align-items: center;
   font-size: 16px;
-  margin: 12px 0 12px auto;
-  padding: 0 auto;
   transition: var(--transition);
+  margin: auto;
 }
 
 .search-box input {
@@ -49,7 +49,7 @@ watch(searchQuery, handleSearch);
   font-size: 16px;
   outline: none;
 }
-
+/* 
 .search-box button {
   background-color: var(--color-danger);
   border-radius: 50px;
@@ -60,7 +60,7 @@ watch(searchQuery, handleSearch);
   font-size: 16px;
   outline: none;
   margin-left: 10px;
-}
+} */
 
 .search-box button:hover {
   background-color: var(--color-light);
