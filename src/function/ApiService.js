@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://localhost:7097/api';
+const baseURL = 'http://localhost:5105/api';
 
 const apiService = {
   async getEmployees() {
@@ -13,6 +13,20 @@ const apiService = {
       return response.data;
     } catch (error) {
       alert(error.message);
+    }
+  },
+  
+  async getEmployeeById(employeeId){
+    try {
+      const response = await axios.get(`${baseURL}/Employee/GetEmployee/${employeeId}`);
+      console.log('API response:', response.data);
+      if (!response.data) {
+        throw new Error('Failed to fetch employee');
+      }
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching employee:', error);
+      throw error;
     }
   },
 
@@ -35,19 +49,25 @@ const apiService = {
     }
   },
 
-  async getEmployeeById(employeeId){
+
+  async deleteEmployee(employeeId) {
     try {
-      const response = await axios.get(`${baseURL}/Employee/GetEmployee/${employeeId}`);
-      console.log('API response:', response.data);
-      if (!response.data) {
-        throw new Error('Failed to fetch employee');
-      }
+      const response = await axios.delete(`${baseURL}/Employee/DeleteEmployee?id=${employeeId}`);
       return response.data;
     } catch (error) {
-      console.error('Error fetching employee:', error);
+      console.error('Error deleting employee:', error);
       throw error;
     }
   },
+  async updateEmployee(employeeData) {
+    try {
+      const response = await axios.put(`${baseURL}/Employee/UpdateEmployee`, employeeData);
+      return response.data;
+    } catch (error) {
+      throw new Error(`Error updating employee: ${error.message}`);
+    }
+  },
+  
   /* Department Controller */
 
   async getDepartments() {
@@ -62,7 +82,6 @@ const apiService = {
       alert(error.message);
     }
   },
-
 };
 
 

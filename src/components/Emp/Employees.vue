@@ -53,8 +53,8 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import SearchBox from './SearchBox.vue';
-import { apiService } from '../function/EmpApiService';
+import SearchBox from '../SearchBox.vue';
+import { apiService } from '@/function/ApiService.js';
 
 const employees = ref([]);
 const departments = ref([]);
@@ -145,5 +145,6 @@ onMounted(async () => {
 tbody tr:hover {
   color: var(--color-black);
   background-color: var(--color-light);
+  cursor: pointer;
 }
 </style>

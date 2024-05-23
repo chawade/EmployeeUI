@@ -1,3 +1,4 @@
+<!-- EmployeeDetail.vue -->
 <template>
   <div class="container">
     <h2>Employee Details</h2>
@@ -7,6 +8,7 @@
       <p>Gender: {{ employee.gender }}</p>
       <p>Job Title: {{ employee.jobTitle }}</p>
       <p>Department: {{ employee.departmentName }}</p>
+      <p>Projects: {{ employee.projects.join(', ') }}</p>
       <div v-if="employee.projects && employee.projects.length" class="projects">
         <h3>Projects:</h3>
         <ul>
@@ -14,6 +16,8 @@
         </ul>
       </div>
       <router-link to="/employees" class="btn btn-primary">Back to Employees</router-link>
+      <button @click="editEmployee" class="btn btn-primary">Edit</button>
+      <button @click="deleteEmployee" class="btn btn-danger">Delete</button>
     </div>
     <div v-else>
       <p>Loading employee details...</p>
@@ -23,11 +27,12 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import { apiService } from '../function/EmpApiService';
+import { useRoute, useRouter } from 'vue-router';
+import { apiService } from '@/function/ApiService.js';
 
 const employee = ref(null);
 const route = useRoute();
+const router = useRouter();
 
 const fetchEmployee = async () => {
   try {
@@ -37,11 +42,28 @@ const fetchEmployee = async () => {
       if (response && response.length > 0) {
         employee.value = response[0];
       }
-      console.log(employee.value);
     }
   } catch (error) {
     console.error('Error fetching employee details:', error);
   }
+};
+
+const deleteEmployee = async () => {
+  try {
+    const confirmed = confirm('Are you sure you want to delete this employee?');
+    if (confirmed) {
+      const employeeId = route.params.id;
+      await apiService.deleteEmployee(employeeId);
+      router.push('/employees');
+    }
+  } catch (error) {
+    console.error('Error deleting employee:', error);
+  }
+};
+
+const editEmployee = () => {
+  const employeeId = route.params.id;
+  router.push(`/employees/${employeeId}/edit-emp`);
 };
 
 onMounted(() => {
@@ -50,24 +72,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.employee-detail p {
-  margin: 5px 0;
-}
-
-.projects {
-  margin-top: 20px;
-}
-
-.projects h3 {
-  margin-bottom: 10px;
-}
-
-.projects ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
-
-.projects li {
-  margin: 5px 0;
+.employee-detail {
+  margin: 20px;
 }
 </style>

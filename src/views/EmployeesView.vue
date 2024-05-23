@@ -1,7 +1,7 @@
 <!-- EmployeesView.vue -->
 <script setup>
 import { ref } from 'vue';
-import apiService from '@/function/EmpApiService.js';
+import apiService from '@/function/ApiService.js';
 import router from '@/router';
 
 const fname = ref('');
