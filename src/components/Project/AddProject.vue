@@ -42,7 +42,7 @@ const router = useRouter();
 const project = ref({
     projectName: '',
     departmentID: 1,
-    startDate: Date().now,
+    startDate: '',
     endDate: ''
 });
 
@@ -68,7 +68,7 @@ const submitProject = async () => {
         project.value = {
             projectName: '',
             departmentID: 1,
-            startDate: Date().now,
+            startDate: '',
             endDate: ''
         };
         router.push(`/projects`);

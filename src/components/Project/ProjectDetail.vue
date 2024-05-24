@@ -36,6 +36,7 @@ const fetchProject = async () => {
         const projectId = route.params.id;
         if (projectId) {
             const response = await apiService.getProjectById(projectId);
+            console.log('fetchProject:',response.value);
             if (response && response.length > 0) {
                 project.value = response[0];
             }

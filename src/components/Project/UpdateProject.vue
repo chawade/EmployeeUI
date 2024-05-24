@@ -4,11 +4,11 @@
         <div v-if="project" class="project-form">
             <div class="form-group">
                 <label for="projectName">Project Name:</label>
-                <input type="text" id="projectName" v-model="project.projectName" class="form-control" />
+                <input type="text" id="projectName" v-model="project.projectName" class="form-control" required/>
             </div>
             <div class="form-group">
                 <label for="departmentID">Department:</label>
-                <select id="departmentID" v-model="selectedDepartment" class="dept-select">
+                <select id="departmentID" v-model="selectedDepartment" class="dept-select" required>
                     <option v-for="dept in departments" :key="dept.departmentID" :value="dept.departmentID">
                         {{ dept.departmentName }}
                     </option>
@@ -25,6 +25,7 @@
             <button @click="goToProjectDetail(projectId)" class="btn btn-danger">Cancel</button>
             <button @click="updateProject" class="btn btn-primary">Update</button>
         </div>
+
         <div v-else>
             <p>Loading project data...</p>
         </div>
@@ -44,23 +45,22 @@ const projectId = route.params.id;
 const router = useRouter();
 
 const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const day = date.getDate().toString().padStart(2, '0');
-  return `${year}-${month}-${day}`;
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
 };
-
-const formattedStartDate = formatDate(project.startDate);
-const formattedEndDate = formatDate(project.endDate);
 
 const fetchProject = async () => {
     try {
         if (projectId) {
             const response = await apiService.getProjectById(projectId);
-            if (response && response.length > 0) {
+            console.log('fetchProject response:', response);
+            if (response  && response.length > 0) {
                 project.value = response[0];
-                selectedDepartment.value = response[0].departmentID;
+                selectedDepartment.value = project.value.departmentID;
             }
         }
     } catch (error) {
@@ -80,14 +80,14 @@ const fetchDepartments = async () => {
 const updateProject = async () => {
     try {
         if (project.value) {
+            // Convert dates to correct format before updating
             const formattedStartDate = formatDate(project.value.startDate);
             const formattedEndDate = formatDate(project.value.endDate);
 
             project.value.projectID = projectId;
-            project.value.departmentID = selectedDepartment.value;
-            project.value.startDate = formattedStartDate; // Update formatted start date
-            project.value.endDate = formattedEndDate; // Update formatted end date
-
+            project.value.departmentID = selectedDepartment.value || project.value.departmentID;
+            project.value.startDate = formattedStartDate || null;
+            project.value.endDate = formattedEndDate || null;
             await apiService.updateProject(project.value);
             console.log('Project updated successfully');
             router.push(`/projects/${project.value.projectID}`);
@@ -105,6 +105,7 @@ onMounted(() => {
     fetchProject();
     fetchDepartments();
 });
+
 </script>
 
 <style scoped>

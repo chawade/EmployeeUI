@@ -32,8 +32,8 @@
               <td>{{ index + 1 }}</td>
               <td>{{ project.projectName }}</td>
               <td>{{ project.department }}</td>
-              <td>{{ project.startDate || '-' }}</td>
-              <td>{{ project.endDate || '-' }}</td>
+              <td>{{ formatDate(project.startDate) || '-' }}</td>
+              <td>{{ formatDate(project.endDate) || '-' }}</td>
             </tr>
           </tbody>
         </table>
@@ -57,6 +57,12 @@
   const isLoading = ref(true);
   const router = useRouter();
   
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`;
+};
+
   const fetchProjects = async () => {
     try {
       projects.value = await apiService.getProjects();

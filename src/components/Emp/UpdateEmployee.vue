@@ -62,6 +62,8 @@ const fetchEmployee = async () => {
             if (response && response.length > 0) {
                 employee.value = response[0];
                 selectedDepartment.value = response[0].departmentID;
+                console.log(selectedDepartment.value);
+
             }
         }
     } catch (error) {

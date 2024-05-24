@@ -8,7 +8,6 @@
       <p>Gender: {{ employee.gender }}</p>
       <p>Job Title: {{ employee.jobTitle }}</p>
       <p>Department: {{ employee.departmentName }}</p>
-      <!-- <p>Projects: {{ employee.projects.join(', ') }}</p> -->
       <div v-if="employee.projects && employee.projects.length" class="projects">
         <h3>Projects:</h3>
         <ul>
