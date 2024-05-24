@@ -28,13 +28,13 @@
             </div>
             <div class="form-group">
                 <label for="departmentID">Department:</label>
-                <select id="departmentID" v-model="employee.departmentID" class="form-control" required>
-                    <option value="1">IT</option>
-                    <option value="2">HR</option>
-                    <option value="3">Marketing</option>
-                    <option value="4">Logistic</option>
+                <select id="departmentID" v-model="selectedDepartment" class="dept-select">
+                    <option v-for="dept in departments" :key="dept.departmentID" :value="dept.departmentID">
+                        {{ dept.departmentName }}
+                    </option>
                 </select>
             </div>
+            <button @click="goToEmployeeDetail(employeeId)" class="btn btn-danger">Cancel</button>
             <button @click="updateEmployee" class="btn btn-primary">Update</button>
         </div>
         <div v-else>
@@ -49,6 +49,8 @@ import { useRoute, useRouter } from 'vue-router';
 import { apiService } from '@/function/ApiService';
 
 const employee = ref(null);
+const departments = ref([]);
+const selectedDepartment = ref('');
 const route = useRoute();
 const employeeId = route.params.id;
 const router = useRouter();
@@ -59,6 +61,7 @@ const fetchEmployee = async () => {
             const response = await apiService.getEmployeeById(employeeId);
             if (response && response.length > 0) {
                 employee.value = response[0];
+                selectedDepartment.value = response[0].departmentID; // Initialize the selected department
             }
         }
     } catch (error) {
@@ -66,11 +69,20 @@ const fetchEmployee = async () => {
     }
 };
 
+const fetchDepartments = async () => {
+    try {
+        const response = await apiService.getDepartments();
+        departments.value = response;
+    } catch (error) {
+        console.error('Error fetching departments:', error);
+    }
+};
 
 const updateEmployee = async () => {
     try {
         if (employee.value) {
-            employee.value.employeeId = route.params.id;
+            employee.value.employeeId = employeeId;
+            employee.value.departmentID = selectedDepartment.value; // Update the department ID
             await apiService.updateEmployee(employee.value);
             console.log('Employee updated successfully');
             router.push(`/employees/${employee.value.employeeId}`);
@@ -80,8 +92,13 @@ const updateEmployee = async () => {
     }
 };
 
+const goToEmployeeDetail = (employeeId) => {
+    router.push(`/employees/${employeeId}`);
+};
+
 onMounted(() => {
     fetchEmployee();
+    fetchDepartments();
 });
 </script>
 

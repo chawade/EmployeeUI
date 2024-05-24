@@ -10,7 +10,7 @@
             </div>
             <div class="r-home">
                 <li><router-link to="/employees" class="btn btn-primary">Employees list</router-link></li>
-                <li><router-link to="/employees/add-employee" class="btn btn-primary">Add Employee</router-link></li>
+                <!-- <li><router-link to="/employees/add-employee" class="btn btn-primary">Add Employee</router-link></li> -->
                 <li><router-link to="/departments" class="btn btn-primary">Department</router-link></li>
             </div>
         </div>

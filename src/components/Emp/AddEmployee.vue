@@ -80,13 +80,4 @@ const submitEmployee = async () => {
     }
 };
 
-// const submitAdd = async () => {
-//     try {
-//         if (employee.value) {
-//             console.log('Employee Added successfully');
-//         }
-//     } catch (error) {
-//         console.error('Error Adding employee:', error);
-//     }
-// };
 </script>
