@@ -11,6 +11,11 @@ import DeptDetail from '@/components/Dept/DeptDetail.vue';
 import AddDept from '@/components/Dept/AddDept.vue';
 import UpdateDept from '@/components/Dept/UpdateDept.vue';
 
+import Projects from '@/components/Project/Projects.vue';
+import ProjectDetail from '@/components/Project/ProjectDetail.vue';
+import AddProject from '@/components/Project/AddProject.vue';
+import UpdateProject from '@/components/Project/UpdateProject.vue';
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -63,6 +68,29 @@ const router = createRouter({
             path: '/departments/:id/edit-dept',
             name: 'UpdateDept',
             component: UpdateDept,
+        },
+
+        // Project
+        {
+            path: '/projects',
+            name: 'Projects',
+            component: Projects
+        },
+        {
+            path: '/projects/add-project',
+            name: 'AddProject',
+            component: AddProject
+        },
+        {
+            path: '/projects/:id',
+            name: 'ProjectDetail',
+            component: ProjectDetail,
+            props: true,
+        },
+        {
+            path: '/projects/:id/edit-project',
+            name: 'UpdateProject',
+            component: UpdateProject,
         }
     ]
 });

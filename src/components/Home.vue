@@ -9,9 +9,9 @@
                 <span>to Employees Management System</span>
             </div>
             <div class="r-home">
-                <li><router-link to="/employees" class="btn btn-primary">Employees list</router-link></li>
-                <!-- <li><router-link to="/employees/add-employee" class="btn btn-primary">Add Employee</router-link></li> -->
-                <li><router-link to="/departments" class="btn btn-primary">Department</router-link></li>
+                <li><router-link to="/employees" class="btn btn-primary">Employees</router-link></li>
+                <li><router-link to="/departments" class="btn btn-primary">Departments</router-link></li>
+                <li><router-link to="/projects" class="btn btn-primary">Projects</router-link></li>
             </div>
         </div>
     </header>

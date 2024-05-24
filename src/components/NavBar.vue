@@ -4,8 +4,9 @@
             <router-link to="/">Employees Management</router-link>
             <ul class="nav-links">
                 <li><router-link to="/">Home</router-link></li>
-                <li><router-link to="/employees">Employee</router-link></li>
-                <li><router-link to="/departments">Department</router-link></li>
+                <li><router-link to="/employees">Employees</router-link></li>
+                <li><router-link to="/departments">Departments</router-link></li>
+                <li><router-link to="/projects">Projects</router-link></li>
             </ul>
         </div>
     </nav>

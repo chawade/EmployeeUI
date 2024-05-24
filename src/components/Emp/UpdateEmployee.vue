@@ -61,7 +61,7 @@ const fetchEmployee = async () => {
             const response = await apiService.getEmployeeById(employeeId);
             if (response && response.length > 0) {
                 employee.value = response[0];
-                selectedDepartment.value = response[0].departmentID; // Initialize the selected department
+                selectedDepartment.value = response[0].departmentID;
             }
         }
     } catch (error) {
