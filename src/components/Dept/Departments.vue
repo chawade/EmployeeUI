@@ -9,7 +9,6 @@
       <table class="data-table">
         <thead>
           <tr>
-            <th></th>
             <th>No.</th>
             <th>Department</th>
             <th>ManagerID</th>
@@ -19,14 +18,12 @@
         <tbody>
           <tr v-for="(department, index) in departments" :key="department.departmentID"
             @click="goToDepartmentDetail(department.departmentID)">
-            <td>{{ department.departmentID }}</td>
             <td>{{ index + 1 }}</td>
             <td>{{ department.departmentName }}</td>
             <td>{{ department.managerID }}</td>
             <td>
               <ul>
-                <li v-for="(project, projectIndex) in department.projects" :key="projectIndex">{{ projectIndex + 1 }}.
-                  {{ project }}</li>
+                <li v-for="(project, projectIndex) in department.projects" :key="projectIndex">{{ project }}</li>
               </ul>
             </td>
           </tr>
