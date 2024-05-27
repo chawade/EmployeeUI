@@ -1,7 +1,7 @@
 <template>
     <div class="container add-container">
         <div class="add-l">
-            <li><router-link to="/employees">Back</router-link></li>
+            <li><router-link to="/employees" class="btn btn-primary">Back</router-link></li>
             <h1>Add New Employee</h1>
         </div>
         <form @submit.prevent="submitEmployee">

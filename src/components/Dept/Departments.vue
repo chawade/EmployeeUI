@@ -1,11 +1,9 @@
 <!-- src/components/Employees.vue -->
 <template>
   <div class="container emp-container">
-    <div class="emp-header">
-      <div class="emp-addSearch">
-        <SearchBox @search="handleSearch" v-model:search="searchQuery" />
-        <li><router-link to="/departments/add-department" class="btn btn-primary">New</router-link></li>
-      </div>
+    <div class="dept-addSearch">
+      <SearchBox @search="handleSearch" v-model:search="searchQuery" />
+      <li><router-link to="/departments/add-department" class="btn btn-primary">New</router-link></li>
     </div>
     <div class="emp-table">
       <table class="data-table">
@@ -21,13 +19,14 @@
         <tbody>
           <tr v-for="(department, index) in departments" :key="department.departmentID"
             @click="goToDepartmentDetail(department.departmentID)">
-            <td>{{  department.departmentID }}</td>
+            <td>{{ department.departmentID }}</td>
             <td>{{ index + 1 }}</td>
             <td>{{ department.departmentName }}</td>
             <td>{{ department.managerID }}</td>
             <td>
               <ul>
-                <li v-for="(project, projectIndex) in department.projects" :key="projectIndex">{{ projectIndex + 1 }}. {{ project }}</li>
+                <li v-for="(project, projectIndex) in department.projects" :key="projectIndex">{{ projectIndex + 1 }}.
+                  {{ project }}</li>
               </ul>
             </td>
           </tr>

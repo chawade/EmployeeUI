@@ -141,7 +141,6 @@ td {
   justify-content: center;
   margin: 3em auto 0;
   padding: 20px;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -202,4 +201,12 @@ input[type="email"] {
 .update-link{
   display: flex;
   gap: 18px;
+}
+
+.dept-addSearch{
+  display: grid;
+  grid-auto-flow: column;
+  align-items: end;
+  justify-content: end;
+  gap: 10px;
 }
