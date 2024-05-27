@@ -11,16 +11,25 @@
       <table class="data-table">
         <thead>
           <tr>
+            <th></th>
             <th>No.</th>
             <th>Department</th>
             <th>ManagerID</th>
+            <th>Project</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(department, index) in filteredDepartments" :key="index" @click="goToDepartmentDetail(department.departmentID)">
+          <tr v-for="(department, index) in departments" :key="department.departmentID"
+            @click="goToDepartmentDetail(department.departmentID)">
+            <td>{{  department.departmentID }}</td>
             <td>{{ index + 1 }}</td>
             <td>{{ department.departmentName }}</td>
             <td>{{ department.managerID }}</td>
+            <td>
+              <ul>
+                <li v-for="(project, projectIndex) in department.projects" :key="projectIndex">{{ projectIndex + 1 }}. {{ project }}</li>
+              </ul>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -31,8 +40,8 @@
   </div>
 </template>
 
-  
-  <script setup>
+
+<script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import SearchBox from '../SearchBox.vue';
@@ -46,6 +55,7 @@ const router = useRouter();
 const fetchDepartments = async () => {
   try {
     departments.value = await apiService.getDepartments();
+    console.log(departments.value);
   } catch (error) {
     console.error('Error fetching departments:', error);
   } finally {
@@ -73,18 +83,17 @@ const filteredDepartments = computed(() => {
 });
 </script>
 
-  
-  <style scoped>
-  .btn-danger {
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 10px;
-  }
-  
-  tbody tr:hover {
-    color: var(--color-black);
-    background-color: var(--color-light);
-    cursor: pointer;
-  }
-  </style>
-  
+
+<style scoped>
+.btn-danger {
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+tbody tr:hover {
+  color: var(--color-black);
+  background-color: var(--color-light);
+  cursor: pointer;
+}
+</style>

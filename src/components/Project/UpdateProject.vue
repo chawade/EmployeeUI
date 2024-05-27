@@ -22,8 +22,10 @@
                 <label for="endDate">End Date:</label>
                 <input type="date" id="endDate" v-model="project.endDate" class="form-control" />
             </div>
-            <button @click="goToProjectDetail(projectId)" class="btn btn-danger">Cancel</button>
-            <button @click="updateProject" class="btn btn-primary">Update</button>
+            <div class="update-link">
+                <button @click="goToProjectDetail(projectId)" class="btn btn-danger">Cancel</button>
+                <button @click="updateProject" class="btn btn-primary">Update</button>
+            </div>
         </div>
 
         <div v-else>
@@ -80,7 +82,6 @@ const fetchDepartments = async () => {
 const updateProject = async () => {
     try {
         if (project.value) {
-            // Convert dates to correct format before updating
             const formattedStartDate = formatDate(project.value.startDate);
             const formattedEndDate = formatDate(project.value.endDate);
 

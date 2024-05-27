@@ -123,7 +123,7 @@ td {
   color: var(--color-dark);
 } */
 
-.emp-notfound{
+.notfound{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -187,4 +187,19 @@ input[type="email"] {
   display: flex;
   justify-content: flex-end;
   margin-right: 1em;
+}
+
+.detail{
+  display: grid;
+  gap: 18px;
+}
+
+.detail-link{
+  display: flex;
+  gap: 16px;
+}
+
+.update-link{
+  display: flex;
+  gap: 18px;
 }

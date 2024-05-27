@@ -11,8 +11,10 @@
                 <input type="number" id="managerID" v-model="department.managerID" class="form-control" />
             </div>
             <div class="form-group">
-                <button @click="goToDepartmentDetail(departmentId)" class="btn btn-danger">Cancel</button>
-                <button @click="updateDepartment" class="btn btn-primary">Update</button>
+                <div class="update-link">
+                    <button @click="goToDepartmentDetail(departmentId)" class="btn btn-danger">Cancel</button>
+                    <button @click="updateDepartment" class="btn btn-primary">Update</button>
+                </div>
             </div>
         </div>
         <div v-else>

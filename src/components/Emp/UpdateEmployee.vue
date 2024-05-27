@@ -34,8 +34,10 @@
                     </option>
                 </select>
             </div>
-            <button @click="goToEmployeeDetail(employeeId)" class="btn btn-danger">Cancel</button>
-            <button @click="updateEmployee" class="btn btn-primary">Update</button>
+            <div class="update-link">
+                <button @click="goToEmployeeDetail(employeeId)" class="btn btn-danger">Cancel</button>
+                <button @click="updateEmployee" class="btn btn-primary">Update</button>
+            </div>
         </div>
         <div v-else>
             <p>Loading employee data...</p>

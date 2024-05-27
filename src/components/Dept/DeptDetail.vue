@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-      <h2>Department Details</h2>
-      <div v-if="department" class="department-detail">
+      <h2><span>Department Details</span></h2>
+      <div v-if="department" class="department-detail detail">
         <p>Department Name: {{ department.departmentName }}</p>
         <p>Manager ID: {{ department.managerID }}</p>
         <div v-if="department.projects && department.projects.length" class="projects">
@@ -10,13 +10,15 @@
             <li v-for="(project, index) in department.projects" :key="index">{{ project }}</li>
           </ul>
         </div>
-        <router-link to="/departments" class="btn btn-primary">Back to Departments</router-link>
-        <button @click="editDepartment" class="btn btn-primary">Edit</button>
-        <button @click="deleteDepartment" class="btn btn-danger">Delete</button>
+        <div class="detail-link">
+          <router-link to="/departments" class="btn btn-primary">Back to Departments</router-link>
+          <button @click="editDepartment" class="btn btn-primary">Edit</button>
+          <button @click="deleteDepartment" class="btn btn-danger">Delete</button>
+        </div>
       </div>
-      <div v-else>
-        <p>Loading department details...</p>
-      </div>
+      <div class="notfound" v-else>
+      <p>No Department found.</p>
+    </div>
     </div>
   </template>
   

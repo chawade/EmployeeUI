@@ -44,7 +44,7 @@
         </tbody>
       </table>
     </div>
-    <div class="emp-notfound" v-else>
+    <div class="emp-notfound notfound" v-else>
       <p>No employees found.</p>
     </div>
   </div>

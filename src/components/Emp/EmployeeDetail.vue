@@ -1,8 +1,8 @@
 <!-- EmployeeDetail.vue -->
 <template>
   <div class="container">
-    <h2>Employee Details</h2>
-    <div v-if="employee" class="employee-detail">
+    <h2><span>Employee Details</span></h2>
+    <div v-if="employee" class="employee-detail detail">
       <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
       <p>Email: {{ employee.email }}</p>
       <p>Gender: {{ employee.gender }}</p>
@@ -14,12 +14,14 @@
           <li v-for="(project, index) in employee.projects" :key="index">{{ project }}</li>
         </ul>
       </div>
-      <router-link to="/employees" class="btn btn-primary">Back to Employees</router-link>
-      <button @click="editEmployee" class="btn btn-primary">Edit</button>
-      <button @click="deleteEmployee" class="btn btn-danger">Delete</button>
+      <div class="detail-link">
+        <router-link to="/employees" class="btn btn-primary">Back to Employees</router-link>
+        <button @click="editEmployee" class="btn btn-primary">Edit</button>
+        <button @click="deleteEmployee" class="btn btn-danger">Delete</button>
+      </div>
     </div>
-    <div v-else>
-      <p>Loading employee details...</p>
+    <div class="notfound" v-else>
+      <p>No employees found.</p>
     </div>
   </div>
 </template>
