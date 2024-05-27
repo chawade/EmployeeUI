@@ -4,8 +4,8 @@
         <div v-if="project" class="project-detail detail">
             <h2>{{ project.projectName }}</h2>
             <p>Department: {{ project.department }}</p>
-            <p>Start Date: {{ formatDate(project.startDate) }}</p>
-            <p>End Date: {{ formatDate(project.endDate) }}</p>
+            <p>Start Date: {{ formatDate(project.startDate) || N/A }}</p>
+            <p>End Date: {{ formatDate(project.endDate) || N/A }}</p>
             <div class="detail-link">
                 <router-link to="/projects" class="btn btn-primary">Back to Projects</router-link>
                 <button @click="editProject" class="btn btn-primary">Edit</button>
@@ -26,6 +26,7 @@ import { apiService } from '@/function/ApiService.js';
 const project = ref(null);
 const route = useRoute();
 const router = useRouter();
+const projectId = route.params.id;
 
 const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -35,7 +36,7 @@ const formatDate = (dateString) => {
 
 const fetchProject = async () => {
     try {
-        const projectId = route.params.id;
+        
         if (projectId) {
             const response = await apiService.getProjectById(projectId);
             console.log('fetchProject:', response.value);
@@ -52,7 +53,6 @@ const deleteProject = async () => {
     try {
         const confirmed = confirm('Are you sure you want to delete this employee?');
         if (confirmed) {
-            const projectId = route.params.id;
             await apiService.deleteProject(projectId);
             router.push('/projects');
         }

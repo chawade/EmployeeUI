@@ -7,7 +7,7 @@
         <div v-if="department.projects && department.projects.length" class="projects">
           <h3>Projects:</h3>
           <ul>
-            <li v-for="(project, index) in department.projects" :key="index">{{ project }}</li>
+            <li v-for="(project, index) in department.projects" :key="index">{{ index + 1 }}. {{ project }}</li>
           </ul>
         </div>
         <div class="detail-link">

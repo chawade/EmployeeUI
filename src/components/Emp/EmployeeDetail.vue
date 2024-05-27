@@ -4,14 +4,14 @@
     <h2><span>Employee Details</span></h2>
     <div v-if="employee" class="employee-detail detail">
       <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
-      <p>Email: {{ employee.email }}</p>
-      <p>Gender: {{ employee.gender }}</p>
-      <p>Job Title: {{ employee.jobTitle }}</p>
+      <p>Email: {{ employee.email || N/A }}</p>
+      <p>Gender: {{ employee.gender || N/A }}</p>
+      <p>Job Title: {{ employee.jobTitle || N/A }}</p>
       <p>Department: {{ employee.departmentName }}</p>
       <div v-if="employee.projects && employee.projects.length" class="projects">
         <h3>Projects:</h3>
         <ul>
-          <li v-for="(project, index) in employee.projects" :key="index">{{ project }}</li>
+          <li v-for="(project, index) in employee.projects" :key="index">{{ index + 1 }}. {{ project || N/A }}</li>
         </ul>
       </div>
       <div class="detail-link">

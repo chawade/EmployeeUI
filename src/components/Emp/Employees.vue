@@ -33,7 +33,6 @@
         <tbody>
           <tr v-for="(employee, index) in filteredEmployees" :key="employee.employeeID" @click="goToEmployeeDetail(employee.employeeID)">
             <td>{{ index + 1 }}</td>
-            <!-- <td>{{ employee.employeeID }}</td> -->
             <td>{{ employee.firstName }}</td>
             <td>{{ employee.lastName }}</td>
             <td>{{ employee.email || '-' }}</td>
