@@ -51,7 +51,7 @@ const router = useRouter();
 const fetchDepartments = async () => {
   try {
     departments.value = await apiService.getDepartments();
-    console.log(departments.value);
+    // console.log(departments.value);
   } catch (error) {
     console.error('Error fetching departments:', error);
   } finally {

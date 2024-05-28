@@ -22,8 +22,8 @@ namespace EmployeeAPI.Repository
                                   proj.ProjectID,
                                   proj.ProjectName,
                                   Department = dept.DepartmentName,
-                                  StartDate = proj.StartDate != null ? proj.StartDate.Value.ToString("yyyy-MM-dd HH:mm") : null,
-                                  EndDate = proj.EndDate != null ? proj.EndDate.Value.ToString("yyyy-MM-dd HH:mm") : null
+                                  StartDate = proj.StartDate != null ? proj.StartDate : null,
+                                  EndDate = proj.EndDate != null ? proj.EndDate : null
                               }).ToListAsync<object>();
             return data;
         }
