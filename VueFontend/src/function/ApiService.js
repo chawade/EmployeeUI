@@ -6,7 +6,7 @@ const apiService = {
   async getEmployees() {
     try {
       const response = await axios.get(`${baseURL}/Employee/GetEmployees`);
-      console.log(response.data);
+      // console.log(response.data);
       if (!response.data) {
         throw new Error('Network response was not ok');
       }
