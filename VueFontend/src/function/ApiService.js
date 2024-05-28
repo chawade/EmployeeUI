@@ -19,7 +19,7 @@ const apiService = {
   async getEmployeeById(employeeId){
     try {
       const response = await axios.get(`${baseURL}/Employee/GetEmployee/${employeeId}`);
-      console.log('API response:', response.data);
+      // console.log('API response:', response.data);
       if (!response.data) {
         throw new Error('Failed to fetch employee');
       }
