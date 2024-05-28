@@ -6,7 +6,7 @@ const apiService = {
   async getEmployees() {
     try {
       const response = await axios.get(`${baseURL}/Employee/GetEmployees`);
-      console.log(response.data);
+      // console.log(response.data);
       if (!response.data) {
         throw new Error('Network response was not ok');
       }
@@ -19,7 +19,7 @@ const apiService = {
   async getEmployeeById(employeeId){
     try {
       const response = await axios.get(`${baseURL}/Employee/GetEmployee/${employeeId}`);
-      console.log('API response:', response.data);
+      // console.log('API response:', response.data);
       if (!response.data) {
         throw new Error('Failed to fetch employee');
       }
@@ -73,7 +73,7 @@ const apiService = {
   async getDepartments() {
     try {
       const response = await axios.get(`${baseURL}/Department/GetDepartments`);
-      console.log(response.data);
+      // console.log(response.data);
       if (!response.data) {
         throw new Error('Network response was not ok');
       }
@@ -86,7 +86,7 @@ const apiService = {
   async getDepartmentById(departmentId){
     try {
       const response = await axios.get(`${baseURL}/Department/GetDepartment/${departmentId}`);
-      console.log('API response:', response.data);
+      // console.log('API response:', response.data);
       if (!response.data) {
         throw new Error('Failed to fetch department');
       }
@@ -142,7 +142,7 @@ const apiService = {
   async getProjects() {
     try {
       const response = await axios.get(`${baseURL}/Project/GetProjects`);
-      console.log(response.data);
+      // console.log(response.data);
       if (!response.data) {
         throw new Error('Network response was not ok');
       }
@@ -155,7 +155,7 @@ const apiService = {
   async getProjectById(projectId){
     try {
       const response = await axios.get(`${baseURL}/Project/GetProject/${projectId}`);
-      console.log('API response:', response.data);
+      // console.log('API response:', response.data);
       if (!response.data) {
         throw new Error('Failed to fetch project');
       }
