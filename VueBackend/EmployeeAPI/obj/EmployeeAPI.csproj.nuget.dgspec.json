@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Training\\EmployeesUI\\VueBackend\\EmployeeAPI\\EmployeeAPI.csproj": {}
+    "C:\\Users\\Anawil Kamsurb\\B\\VueBackend\\EmployeeAPI\\EmployeeAPI.csproj": {}
   },
   "projects": {
-    "D:\\Training\\EmployeesUI\\VueBackend\\EmployeeAPI\\EmployeeAPI.csproj": {
+    "C:\\Users\\Anawil Kamsurb\\B\\VueBackend\\EmployeeAPI\\EmployeeAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Training\\EmployeesUI\\VueBackend\\EmployeeAPI\\EmployeeAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Anawil Kamsurb\\B\\VueBackend\\EmployeeAPI\\EmployeeAPI.csproj",
         "projectName": "EmployeeAPI",
-        "projectPath": "D:\\Training\\EmployeesUI\\VueBackend\\EmployeeAPI\\EmployeeAPI.csproj",
-        "packagesPath": "C:\\Users\\nongb\\.nuget\\packages\\",
-        "outputPath": "D:\\Training\\EmployeesUI\\VueBackend\\EmployeeAPI\\obj\\",
+        "projectPath": "C:\\Users\\Anawil Kamsurb\\B\\VueBackend\\EmployeeAPI\\EmployeeAPI.csproj",
+        "packagesPath": "C:\\Users\\Anawil Kamsurb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Anawil Kamsurb\\B\\VueBackend\\EmployeeAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nongb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Anawil Kamsurb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
