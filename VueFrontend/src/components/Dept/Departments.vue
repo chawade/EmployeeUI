@@ -31,7 +31,10 @@
       </table>
     </div>
     <div class="emp-notfound" v-if="!isLoading && filteredDepartments.length === 0">
-      <p>No departments found.</p>
+      <Notfound/>
+    </div>
+    <div v-else-if="isLoading">
+      <Loading/>
     </div>
   </div>
 </template>
@@ -42,6 +45,8 @@ import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import SearchBox from '../SearchBox.vue';
 import { apiService } from '@/function/ApiService.js';
+import Notfound from '../Notfound.vue';
+import Loading from '../Loading.vue';
 
 const departments = ref([]);
 const searchQuery = ref('');

@@ -29,7 +29,7 @@
         </div>
 
         <div v-else>
-            <p>Loading project data...</p>
+            <Loading/>
         </div>
     </div>
 </template>
@@ -38,6 +38,7 @@
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { apiService } from '@/function/ApiService';
+import Loading from '../Loading.vue';
 
 const project = ref(null);
 const departments = ref([]);

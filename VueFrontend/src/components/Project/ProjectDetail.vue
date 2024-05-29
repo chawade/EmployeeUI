@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <h2><span>Project Details</span></h2>
         <div v-if="project" class="project-detail detail">
+            <h2><span>Project Details</span></h2>
             <h2>{{ project.projectName }}</h2>
             <p>Department: {{ project.department }}</p>
             <p>Start Date: {{ formatDate(project.startDate) || '-' }}</p>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="notfound" v-else>
-            <p>No project found.</p>
+            <Notfound/>
         </div>
     </div>
 </template>
@@ -22,6 +22,7 @@
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { apiService } from '@/function/ApiService.js';
+import Notfound from '../Notfound.vue';
 
 const project = ref(null);
 const route = useRoute();

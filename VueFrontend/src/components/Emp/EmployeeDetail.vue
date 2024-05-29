@@ -1,18 +1,24 @@
 <!-- EmployeeDetail.vue -->
 <template>
   <div class="container">
-    <h2><span>Employee Details</span></h2>
-    <div v-if="employee" class="employee-detail detail">
+    <div v-if="isLoading" class="loading-message">
+      <p>Loading...</p>
+    </div>
+    <div v-else-if="employee" class="employee-detail detail">
+      <h2><span>Employee Details</span></h2>
       <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
       <p>Email: {{ employee.email || '-' }}</p>
       <p>Gender: {{ employee.gender || '-' }}</p>
       <p>Job Title: {{ employee.jobTitle || '-' }}</p>
       <p>Department: {{ employee.departmentName || '-' }}</p>
+      <h3>Projects:</h3>
       <div v-if="employee.projects && employee.projects.length" class="projects">
-        <h3>Projects:</h3>
         <ul>
-          <li v-for="(project, index) in employee.projects" :key="index">{{ index + 1 }}. {{ project || N/A }}</li>
+          <li v-for="(project, index) in employee.projects" :key="index">{{ index + 1 }}. {{ project || '-' }}</li>
         </ul>
+      </div>
+      <div v-else>
+        <p>Currently not responsible for any projects.</p>
       </div>
       <div class="detail-link">
         <router-link to="/employees" class="btn btn-primary">Back to Employees</router-link>
@@ -21,7 +27,7 @@
       </div>
     </div>
     <div class="notfound" v-else>
-      <p>No employees found.</p>
+      <Notfound/>
     </div>
   </div>
 </template>
@@ -30,6 +36,7 @@
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { apiService } from '@/function/ApiService.js';
+import Notfound from '../Notfound.vue';
 
 const employee = ref(null);
 const route = useRoute();
