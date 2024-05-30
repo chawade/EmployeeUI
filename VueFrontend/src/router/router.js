@@ -5,6 +5,7 @@ import Employees from '@/components/Emp/Employees.vue';
 import AddEmployee from '@/components/Emp/AddEmployee.vue';
 import EmployeeDetail from '@/components/Emp/EmployeeDetail.vue';
 import UpdateEmployee from '@/components/Emp/UpdateEmployee.vue';
+import AddmutiEmp from '@/components/Emp/AddmutiEmp.vue';
 
 import Departments from '@/components/Dept/Departments.vue';
 import DeptDetail from '@/components/Dept/DeptDetail.vue';
@@ -45,6 +46,11 @@ const router = createRouter({
             path: '/employees/:id/edit-emp',
             name: 'Edit',
             component: UpdateEmployee,
+        },
+        {
+            path: '/employees/add-employee/more',
+            name: 'AddMoreEmployee',
+            component: AddmutiEmp
         },
 
         // Department

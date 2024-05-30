@@ -1,7 +1,10 @@
 <template>
     <div class="container">
-        <h2>Update Employee</h2>
-        <div v-if="employee" class="employee-form">
+        <div v-if="isLoading" class="loading-message">
+            <Loading />
+        </div>
+        <div v-else-if="employee" class="employee-form">
+            <h2>Update Employee</h2>
             <div class="form-group">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" v-model="employee.firstName" class="form-control" />
@@ -39,8 +42,8 @@
                 <button @click="updateEmployee" class="btn btn-primary">Update</button>
             </div>
         </div>
-        <div v-else>
-            <Loading/>
+        <div class="notfound" v-else>
+            <Notfound />
         </div>
     </div>
 </template>
@@ -50,6 +53,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { apiService } from '@/function/ApiService';
 import Loading from '../Loading.vue';
+import Notfound from '../Notfound.vue';
 
 const employee = ref(null);
 const departments = ref([]);
@@ -58,8 +62,11 @@ const route = useRoute();
 const employeeId = route.params.id;
 const router = useRouter();
 
+const isLoading = ref(false);
+
 const fetchEmployee = async () => {
     try {
+        isLoading.value = true;
         if (employeeId) {
             const response = await apiService.getEmployeeById(employeeId);
             if (response && response.length > 0) {
@@ -71,6 +78,8 @@ const fetchEmployee = async () => {
         }
     } catch (error) {
         console.error('Error fetching employee data:', error);
+    } finally {
+        isLoading.value = false;
     }
 };
 

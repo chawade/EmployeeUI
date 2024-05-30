@@ -1,3 +1,5 @@
+<!-- VueFrontend\src\components\Emp\AddEmployee.vue -->
+
 <template>
     <div class="container add-container">
         <div class="add-l">
@@ -40,7 +42,8 @@
                 <input type="text" id="jobTitle" v-model="employee.jobTitle" />
             </div>
             <div class="add-submit">
-                <button type="submit" class="btn btn-danger">Submit</button>
+                <!-- <router-link to="/employees/add-employee/more" class="btn btn-danger">more</router-link> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
     </div>
@@ -52,8 +55,9 @@ import { useRouter } from 'vue-router';
 import { apiService } from '@/function/ApiService';
 
 const router = useRouter();
-const selectedDepartment = ref(1);
+const selectedDepartment = ref(null);
 const departments = ref([]);
+const isLoading = ref(true);
 
 const employee = ref({
     firstName: '',
@@ -68,8 +72,9 @@ const fetchDepartments = async () => {
     try {
         const response = await apiService.getDepartments();
         departments.value = response;
-        if (response.length > 0) {
-            selectedDepartment.value = response[0].departmentID; // Set the first department as the selected department
+        if (departments.value.length > 0) {
+            selectedDepartment.value = departments.value[0].departmentID;
+            employee.value.departmentID = selectedDepartment.value; // แก้ตรงนี้เป็น employee.value
         }
     } catch (error) {
         console.error('Error fetching departments:', error);
