@@ -42,13 +42,12 @@ const apiService = {
 
   async addEmployee(employee) {
     try {
-      const response = await axios.post(`${baseURL}/Employee/AddEmployee`, employee);
-      return response.data;
+        const response = await axios.post(`${baseURL}/Employee/AddEmployee`, employee);
+        return response.data;
     } catch (error) {
-      throw new Error('Failed to add employee: ' + error.message);
+        throw new Error('Failed to add employee: ' + error.message);
     }
-  },
-
+},
 
   async deleteEmployee(employeeId) {
     try {

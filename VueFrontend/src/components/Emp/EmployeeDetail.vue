@@ -2,7 +2,7 @@
 <template>
   <div class="container">
     <div v-if="isLoading" class="loading-message">
-      <p>Loading...</p>
+      <Loading/>
     </div>
     <div v-else-if="employee" class="employee-detail detail">
       <h2><span>Employee Details</span></h2>
@@ -37,13 +37,16 @@ import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { apiService } from '@/function/ApiService.js';
 import Notfound from '../Notfound.vue';
+import Loading from '../Loading.vue';
 
 const employee = ref(null);
 const route = useRoute();
 const router = useRouter();
+const isLoading = ref(false);
 
 const fetchEmployee = async () => {
   try {
+    isLoading.value = true;
     const employeeId = route.params.id;
     if (employeeId) {
       const response = await apiService.getEmployeeById(employeeId);
@@ -53,6 +56,8 @@ const fetchEmployee = async () => {
     }
   } catch (error) {
     console.error('Error fetching employee details:', error);
+  } finally {
+    isLoading.value = false;
   }
 };
 

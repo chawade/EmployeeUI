@@ -41,18 +41,22 @@ const router = useRouter();
 
 const project = ref({
     projectName: '',
-    departmentID: 1,
+    departmentID: null,
     startDate: '',
     endDate: ''
 });
 
 const departments = ref([]);
-const selectedDepartment = ref(1);
+const selectedDepartment = ref(null);
 
 const fetchDepartments = async () => {
     try {
         const response = await apiService.getDepartments();
         departments.value = response;
+        if (departments.value.length > 0) {
+            selectedDepartment.value = departments.value[0].departmentID;
+            project.value.departmentID = selectedDepartment.value;
+        }
     } catch (error) {
         console.error('Error fetching departments:', error);
     }
