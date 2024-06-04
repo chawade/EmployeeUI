@@ -17,8 +17,8 @@ namespace EmployeeAPI.Repository
         public async Task<List<object>> GetEmployees()
         {
             var data = await (from emp in _context.Employees
-                              join dept in _context.Departments on emp.DepartmentID equals dept.DepartmentID
-                              //join proj in _context.Projects on dept.DepartmentID equals proj.DepartmentID
+                              join dept in _context.Departments on emp.DepartmentID equals dept.DepartmentID into empDept
+                              from dept in empDept.DefaultIfEmpty()
                               select new
                               {
                                   emp.EmployeeID,
@@ -27,8 +27,7 @@ namespace EmployeeAPI.Repository
                                   emp.Email,
                                   emp.Gender,
                                   emp.JobTitle,
-                                  dept.DepartmentName,
-                                  //proj.ProjectName,
+                                  DepartmentName = dept != null ? dept.DepartmentName : null
                               }).ToListAsync<object>();
 
             return data;
@@ -40,7 +39,8 @@ namespace EmployeeAPI.Repository
             var dbDept = await _context.Employees.FindAsync(id);
             if (dbDept == null) return null;
             var data = await (from emp in _context.Employees
-                              join dept in _context.Departments on emp.DepartmentID equals dept.DepartmentID
+                              join dept in _context.Departments on emp.DepartmentID equals dept.DepartmentID into empDept
+                              from dept in empDept.DefaultIfEmpty()
                               join proj in _context.Projects on dept.DepartmentID equals proj.DepartmentID into projects
                               where emp.EmployeeID == id
                               select new
@@ -51,7 +51,7 @@ namespace EmployeeAPI.Repository
                                   emp.Gender,
                                   emp.JobTitle,
                                   emp.DepartmentID,
-                                  dept.DepartmentName,
+                                  DepartmentName = dept != null ? dept.DepartmentName : null,
                                   Projects = projects.Select(p => p.ProjectName).ToList()
                               }).ToListAsync<object>();
 

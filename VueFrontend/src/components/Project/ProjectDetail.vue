@@ -4,8 +4,8 @@
         <div v-if="project" class="project-detail detail">
             <h2>{{ project.projectName }}</h2>
             <p>Department: {{ project.department }}</p>
-            <p>Start Date: {{ formatDate(project.startDate) || N/A }}</p>
-            <p>End Date: {{ formatDate(project.endDate) || N/A }}</p>
+            <p>Start Date: {{ formatDate(project.startDate) || '-' }}</p>
+            <p>End Date: {{ formatDate(project.endDate) || '-' }}</p>
             <div class="detail-link">
                 <router-link to="/projects" class="btn btn-primary">Back to Projects</router-link>
                 <button @click="editProject" class="btn btn-primary">Edit</button>

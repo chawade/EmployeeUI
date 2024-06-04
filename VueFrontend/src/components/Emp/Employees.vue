@@ -13,7 +13,7 @@
         <button @click="clearSelection" class="btn btn-danger">Clear</button>
       </div>
       <div class="emp-addSearch">
-        <SearchBox @search="handleSearch" v-model:search="searchQuery" />
+        <SearchBox v-model="searchQuery" @search="handleSearch" />
         <li><router-link to="/employees/add-employee" class="btn btn-primary">New</router-link></li>
       </div>
     </div>

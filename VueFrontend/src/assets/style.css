@@ -136,12 +136,12 @@ td {
 
 .add-container {
   display: grid;
-  grid-template-columns: 50% 50%;
+  /* grid-template-columns: 50% 50%; */
   align-items: center;
   justify-content: center;
-  margin: 3em auto 0;
+  margin: 50px 50px;
   padding: 20px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 

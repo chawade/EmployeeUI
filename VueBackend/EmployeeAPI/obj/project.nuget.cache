@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "veug4hwMtxVlmcuUj+Kq1BLDGyIFsBLkWDbP/nfpV1AnQtJSZn4Swo2FR1ZE/57NXVo4qXz8Oz0bK4+XfTHW7w==",
+  "dgSpecHash": "H1tDcCkQ5mQOo6gOe4STWDU3CQGF/wIllWfuNeMj6pKk/gLBzCzbtgVCQvrl5pc8CeMiIXFiw+XpC9l4D6bLRw==",
   "success": true,
-  "projectFilePath": "D:\\Training\\EmployeeAPI\\EmployeeAPI\\EmployeeAPI.csproj",
+  "projectFilePath": "D:\\Training\\EmployeesUI\\VueBackend\\EmployeeAPI\\EmployeeAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nongb\\.nuget\\packages\\azure.core\\1.39.0\\azure.core.1.39.0.nupkg.sha512",
     "C:\\Users\\nongb\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
