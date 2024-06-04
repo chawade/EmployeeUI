@@ -14,7 +14,7 @@
       </div>
       <div class="emp-addSearch">
         <SearchBox v-model="searchQuery" @search="handleSearch" />
-        <li><router-link to="/employees/add-employee" class="btn btn-primary">New</router-link></li>
+        <li><router-link to="/employees/add-employee" class="btn btn-primary">+ New</router-link></li>
       </div>
     </div>
     <div class="emp-table" v-if="filteredEmployees.length > 0">

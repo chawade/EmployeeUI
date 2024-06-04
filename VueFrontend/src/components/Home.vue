@@ -5,8 +5,9 @@
     <header>
         <div class="container home-container">
             <div class="l-home">
+                <img src="C:\Users\Hart\Bee\EmployeeUI\VueFrontend\public\Employee-Management-Meaning-Importance-Tips-Tools---More.png" alt="รูปบ่ขึ้น">
                 <h1>Welcome</h1>
-                <span>to Employees Management System</span>
+                <span>To My World</span>
             </div>
             <div class="r-home">
                 <li><router-link to="/employees" class="btn btn-primary">Employees</router-link></li>
@@ -18,4 +19,5 @@
 </template>
 
 <style scoped>
+
 </style>

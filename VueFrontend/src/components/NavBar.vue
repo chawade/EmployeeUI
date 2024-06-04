@@ -20,7 +20,8 @@ nav {
     width: 100%;
     top: 0;
     z-index: 10;
-    font-family: 'mali', Bold;
+    font-size: 20px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
 .nav-container {

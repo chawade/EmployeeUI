@@ -72,17 +72,20 @@ a,
   display: flex;
   gap: 15px;
   margin: auto 0 auto 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .emp-selectDept{
   display: flex;
   gap: .3em;
   margin: auto 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .emp-selectDept select, button{
   border-radius: 5px;
   padding: 5px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .emp-selectDept label{
